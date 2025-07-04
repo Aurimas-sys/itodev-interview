@@ -1,23 +1,19 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
-import { globalIgnores } from 'eslint/config'
+import antfu from '@antfu/eslint-config'
+import react from 'eslint-plugin-react'
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-    },
+export default antfu({
+  plugins: {
+    react,
   },
-])
+  rules: {
+    'react/jsx-max-props-per-line': ['error', { maximum: 1 }],
+    'react/jsx-first-prop-new-line': ['error', 'multiline'],
+    'react/jsx-one-expression-per-line': ['error', { allow: 'literal' }],
+    'react/jsx-sort-props': ['error', {
+      callbacksLast: true,
+      shorthandFirst: true,
+      noSortAlphabetically: false,
+      reservedFirst: true,
+    }],
+  },
+})
