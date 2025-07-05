@@ -11,8 +11,8 @@
     "lint:fix": "eslint . --fix",
     "style:check": "stylelint \"**/*.{css,scss}\"",
     "style:fix": "stylelint \"**/*.{css,scss}\" --fix",
-    "all:check": "npm run lint:check && npm run style:check",
-    "all:fix": "npm run lint:fix && npm run style:fix"
+    "all:check": "pnpm run lint:check && pnpm run style:check",
+    "all:fix": "pnpm run lint:fix && pnpm run style:fix"
   },
   "dependencies": {
     "react": "^19.1.0",
