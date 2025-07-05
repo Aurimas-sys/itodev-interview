@@ -6,7 +6,7 @@ export function App() {
   return (
     <>
       <Header />
-      <div className="container">
+      <div>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
