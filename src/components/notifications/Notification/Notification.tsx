@@ -19,7 +19,7 @@ export function Notification({ id, type, message }: NotificationProps) {
   }
 
   useEffect(() => {
-    timeOutId = setTimeout(() => handleClose(), 30000)
+    timeOutId = setTimeout(() => handleClose(), 3000)
 
     return () => {
       if (!timeOutId)

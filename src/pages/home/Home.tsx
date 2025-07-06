@@ -1,6 +1,6 @@
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
-import { ROUTES } from '../../router'
+import { ROUTES } from '../../models/constants/router'
 import styles from './home.module.scss'
 
 export default function Home() {
@@ -25,7 +25,6 @@ export default function Home() {
           View Characters
         </Button>
       </div>
-
     </main>
   )
 }
