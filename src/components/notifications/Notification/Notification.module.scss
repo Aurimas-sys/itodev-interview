@@ -1,0 +1,9 @@
+.notification {
+  &__header {
+    justify-content: end;
+  }
+
+  &__message {
+    color: white;
+  }
+}
