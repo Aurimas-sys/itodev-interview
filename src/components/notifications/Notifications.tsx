@@ -1,6 +1,6 @@
 import type { RootStore } from '../../store/store'
 import { useSelector } from 'react-redux'
-import { Notification } from './Notification'
+import { Notification } from './Notification/Notification'
 import styles from './Notifications.module.scss'
 
 export function Notifications() {

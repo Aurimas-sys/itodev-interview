@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
-import { Alert } from 'react-bootstrap'
+import { Toast } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { removeNotification } from '../../store/slices/notificationsSlice'
+import { removeNotification } from '../../../store/slices/notificationsSlice'
+import styles from './Notification.module.scss'
 
 interface NotificationProps {
   id: number
@@ -13,12 +14,12 @@ export function Notification({ id, type, message }: NotificationProps) {
   let timeOutId: ReturnType<typeof setTimeout> | null = null
   const dispatch = useDispatch()
 
-  const handleClose = (id: number) => {
+  const handleClose = () => {
     dispatch(removeNotification(id))
   }
 
   useEffect(() => {
-    timeOutId = setTimeout(() => handleClose(id), 3000)
+    timeOutId = setTimeout(() => handleClose(), 3000)
 
     return () => {
       if (!timeOutId)
@@ -29,12 +30,19 @@ export function Notification({ id, type, message }: NotificationProps) {
   }, [])
 
   return (
-    <Alert
-      dismissible
-      variant={type}
-      onClose={() => handleClose(id)}
+    <Toast
+      animation
+      bg={type}
+
+      onClose={handleClose}
     >
-      {message}
-    </Alert>
+      <Toast.Header
+        closeButton
+        className={styles.notification__header}
+      />
+      <Toast.Body className={styles.notification__message}>
+        {message}
+      </Toast.Body>
+    </Toast>
   )
 }
