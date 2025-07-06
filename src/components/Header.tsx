@@ -17,9 +17,9 @@ export function Header() {
           <li>
             <NavLink
               className={({ isActive }) => isActive ? 'active' : ''}
-              to="/movies"
+              to="/films"
             >
-              Movies
+              Films
             </NavLink>
           </li>
           <li>
