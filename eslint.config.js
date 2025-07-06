@@ -2,6 +2,9 @@ import antfu from '@antfu/eslint-config'
 import react from 'eslint-plugin-react'
 
 export default antfu({
+  ignores: [
+    '**/*.module.scss.d.ts',
+  ],
   plugins: {
     react,
   },

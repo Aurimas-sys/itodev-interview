@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"vite\" \"pnpm run generate-scss-types:watch\"",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "lint:check": "eslint .",
@@ -12,11 +12,17 @@
     "style:check": "stylelint \"**/*.{css,scss}\"",
     "style:fix": "stylelint \"**/*.{css,scss}\" --fix",
     "all:check": "pnpm run lint:check && pnpm run style:check",
-    "all:fix": "pnpm run lint:fix && pnpm run style:fix"
+    "all:fix": "pnpm run lint:fix && pnpm run style:fix",
+    "generate-scss-types": "typed-scss-modules src --nameFormat none --exportType default",
+    "generate-scss-types:watch": "typed-scss-modules src --nameFormat none --exportType default --watch"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
+    "bootstrap": "^5.3.7",
     "react": "^19.1.0",
+    "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.3"
   },
   "devDependencies": {
@@ -28,6 +34,7 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.5.2",
+    "concurrently": "^9.2.0",
     "eslint": "^9.29.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
@@ -40,6 +47,7 @@
     "stylelint-config-standard-scss": "^15.0.1",
     "stylelint-scss": "^6.12.1",
     "stylelint-use-logical-spec": "^5.0.1",
+    "typed-scss-modules": "^8.1.1",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.34.1",
     "vite": "^7.0.0"
