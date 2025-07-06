@@ -3,8 +3,8 @@ import { createBrowserRouter } from 'react-router-dom'
 import { App } from './App'
 
 const Home = lazy(() => import('./pages/Home'))
-const Movies = lazy(() => import('./pages/Movies'))
-const Movie = lazy(() => import('./pages/Movie'))
+const Films = lazy(() => import('./pages/Films'))
+const Film = lazy(() => import('./pages/Film'))
 const Characters = lazy(() => import('./pages/Characters'))
 const Character = lazy(() => import('./pages/Character'))
 const Error = lazy(() => import('./pages/Error'))
@@ -17,8 +17,8 @@ export const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { index: true, element: <Home /> },
-      { path: 'movies', element: <Movies /> },
-      { path: 'movies/:movieId', element: <Movie /> },
+      { path: 'films', element: <Films /> },
+      { path: 'films/:filmId', element: <Film /> },
       { path: 'characters', element: <Characters /> },
       { path: 'characters/:characterId', element: <Character /> },
       { path: '*', element: <NotFound /> },

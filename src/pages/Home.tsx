@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main>
       <h1>Home</h1>
-      <p>Browse movies or characters</p>
+      <p>Browse films or characters</p>
       <Button
         variant="success"
         onClick={handleNotification}
