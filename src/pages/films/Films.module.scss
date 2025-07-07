@@ -6,11 +6,11 @@
   min-block-size: calc(100dvh - 4rem);
 
   &__title {
+    color: white;
     font-weight: 600;
   }
 
-  &__container,
-  &__skeleton-container {
+  &__container {
     display: flex;
     flex-direction: column;
     block-size: 5rem;

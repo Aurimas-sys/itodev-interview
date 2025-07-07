@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className={styles['home-view']}>
       <div className={styles['home-view__content']}>
-        <h2 className={styles['home-view__message']}>Welcome to Star Wars Movies and Characters Explorer</h2>
+        <h3 className={styles['home-view__message']}>Welcome to Star Wars Movies and Characters Explorer</h3>
         <Button
           className={styles['home-view__button']}
           variant="primary"

@@ -4,7 +4,10 @@ import styles from './SuspenseLoader.module.scss'
 export function SuspenseLoader() {
   return (
     <div className={styles['suspense-loader']}>
-      <Spinner animation="grow" />
+      <Spinner
+        animation="grow"
+        variant="secondary"
+      />
     </div>
   )
 }

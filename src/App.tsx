@@ -11,7 +11,7 @@ import { store } from './store/store'
 const Home = lazy(() => import('./pages/home/Home'))
 const Films = lazy(() => import('./pages/films/Films'))
 const Film = lazy(() => import('./pages/Film'))
-const Characters = lazy(() => import('./pages/Characters'))
+const Characters = lazy(() => import('./pages/characters/Characters'))
 const Character = lazy(() => import('./pages/Character'))
 const NotFound = lazy(() => import('./pages/not-found/NotFound'))
 

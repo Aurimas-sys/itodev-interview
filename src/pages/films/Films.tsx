@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
+import { Spinner } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import Error from '../../components/error/Error'
 import { FilmCard } from '../../components/film-card/FilmCard'
-import { SkeletonCard } from '../../components/skeletons/skeleton-card/SkeletonCard'
+import { NoResults } from '../../components/no-results/NoResults'
 import { useFilmsQuery } from '../../services/queries/general'
 import { addNotification } from '../../store/slices/notificationsSlice'
 import styles from './Films.module.scss'
@@ -20,12 +21,10 @@ export default function Films() {
   if (isPending) {
     return (
       <main className={styles['films-view']}>
-        <div className={styles['films-view__skeleton-container']}>
-          <h2 className={styles['films-view__title']}>Movies</h2>
-          <SkeletonCard className={styles['films-view__skeleton-card']} />
-          <SkeletonCard className={styles['films-view__skeleton-card']} />
-          <SkeletonCard className={styles['films-view__skeleton-card']} />
-        </div>
+        <Spinner
+          animation="border"
+          variant="secondary"
+        />
       </main>
     )
   }
@@ -41,15 +40,19 @@ export default function Films() {
   return (
     <main className={styles['films-view']}>
       <div className={styles['films-view__container']}>
-        <h2 className={styles['films-view__title']}>Movies</h2>
-        {data.map((film, idx) => (
-          <FilmCard
-            key={idx}
-            crawl={film.opening_crawl}
-            title={film.title}
-            url={film.url}
-          />
-        ))}
+        <h3 className={styles['films-view__title']}>Movies</h3>
+        {data.length > 0
+          ? (
+              data.map(film => (
+                <FilmCard
+                  key={film.url}
+                  crawl={film.opening_crawl}
+                  title={film.title}
+                  url={film.url}
+                />
+              ))
+            )
+          : <NoResults /> }
       </div>
     </main>
   )

@@ -1,0 +1,23 @@
+$theme-colors: (
+  "primary": #fb0,
+  "secondary": white,
+  "danger": #b2022f,
+  "success": #24562b,
+  "info": #1cadb6,
+  "warning": #e27429,
+);
+$border-radius: 0.75rem;
+$border-radius-sm: 0.5rem;
+$border-radius-lg: 1rem;
+$pagination-color: #28282b;
+$pagination-bg: white;
+$pagination-border-color: transparent;
+$pagination-hover-color: white;
+$pagination-hover-bg: #28282b;
+$pagination-hover-border-color: transparent;
+$pagination-active-color: black;
+$pagination-active-bg: #fb0;
+$pagination-active-border-color: transparent;
+
+// Must be last
+@import "bootstrap/scss/bootstrap";

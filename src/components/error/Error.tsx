@@ -9,7 +9,7 @@ export default function Error() {
   return (
     <main className={styles.error}>
       <div className={styles.error__content}>
-        <h2 className={styles.error__message}>Whoops! Something went wrong!</h2>
+        <h3 className={styles.error__message}>Whoops! Something went wrong!</h3>
         <p className={styles['error__sub-message']}>We could not find what you were looking for.</p>
         <Button
           className={styles.error__button}
