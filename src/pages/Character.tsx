@@ -13,14 +13,14 @@ export default function Character() {
 
   // We could implement logic to get person information from query and if it exsists, and if it doesnt - to fetch from single person end-point,
   // but IMO such implmenetation would not be of very much benefit in current scenrario but instead be hard to maintain/error prone.
-  const { data, isError, error } = usePersonQuery(characterId)
+  const { data, isError } = usePersonQuery(characterId)
   const dispatch = useDispatch()
 
   useEffect(() => {
     if (isError) {
       dispatch(addNotification({ type: 'danger', message: 'Failed to load character' }))
     }
-  }, [isError, error])
+  }, [isError])
 
   return (
     <main>

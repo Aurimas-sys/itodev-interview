@@ -1,36 +1,99 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { useFilmQuery } from '@/services/queries/general'
+import { CharacterCard } from '@/components/character-card/CharacterCard'
+import Error from '@/components/error/Error'
+import { SpinningLoader } from '@/components/loaders/spinning-loader/SpinningLoader'
+import styles from '@/pages/film/Film.module.scss'
+import { useFilmQuery, usePeopleByUrlsQuery } from '@/services/queries/general'
 import { addNotification } from '@/store/slices/notificationsSlice'
+import { getImage } from '@/utils/image'
 
 export default function Film() {
   const { filmId } = useParams()
+  let content
 
   if (!filmId) {
-    return (<div>Something went wrong..</div>)
+    return (
+      <main className={styles['film-view']}>
+        <div className={styles['film-view__container']}>
+          <Error />
+        </div>
+      </main>
+    )
   }
 
-  // We could implement logic to get film information from query and if it exsists, and if it doesnt - to fetch from single film end-point,
-  // but IMO such implmenetation would not be of very much benefit in current scenrario but instead be hard to maintain/error prone.
-  const { data, isError, error } = useFilmQuery(filmId)
+  const { data: film, isError: isFilmLoadError, isPending: isFilmLoadPending } = useFilmQuery(filmId)
+  const { data: characters, isError: isCharactersLoadError, isPending: isCharactersPending } = usePeopleByUrlsQuery(film?.characters)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (isError) {
+    if (isFilmLoadError || isCharactersLoadError) {
       dispatch(addNotification({ type: 'danger', message: 'Failed to load film' }))
     }
-  }, [isError, error])
+  }, [isFilmLoadError, isCharactersLoadError])
+
+  if (isFilmLoadPending || isCharactersPending) {
+    content = (
+      <SpinningLoader
+        className={styles['film-view__loader']}
+        variant="complementary"
+      />
+    )
+  }
+  else if (isFilmLoadError || isCharactersLoadError) {
+    content = <Error />
+  }
+  else {
+    content = (
+      <>
+        <h3 className={styles['film-view__title']}>
+          {film.title}
+        </h3>
+        <div
+          className={styles['film-view__image']}
+          style={{ backgroundImage: `url(${getImage(Number(filmId))})` }}
+        />
+        <div className={styles['sub-information']}>
+          <div>
+            <span className={styles['sub-information__title']}>Episode:</span>
+            {film.episode_id}
+          </div>
+          <div>
+            <span className={styles['sub-information__title']}>Director:</span>
+            {film.director}
+          </div>
+          <div>
+            <span className={styles['sub-information__title']}>Producer:</span>
+            {film.producer}
+          </div>
+          <div>
+            <span className={styles['sub-information__title']}>Released:</span>
+            { film.release_date}
+          </div>
+        </div>
+        <p className={styles['film-view__crawl']}>
+          {film.opening_crawl}
+        </p>
+
+        <div className={styles['film-view__characters-cards']}>
+          {characters.map((character, idx) => (
+            <CharacterCard
+              key={idx}
+              name={character.name}
+              url={character.url}
+            />
+          ))}
+        </div>
+      </>
+    )
+  }
 
   return (
-    <main>
-      <h1>Film</h1>
-      <p>
-        {`Single film with ${filmId} id`}
-      </p>
-      <pre>
-        {JSON.stringify(data, null, 2)}
-      </pre>
+    <main className={styles['film-view']}>
+      <div className={styles['film-view__container']}>
+        {content}
+      </div>
     </main>
   )
 }

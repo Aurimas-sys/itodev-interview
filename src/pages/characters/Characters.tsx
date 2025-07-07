@@ -14,7 +14,7 @@ export default function Characters() {
   const ITEMS_PER_PAGE = 9
   let content
 
-  const { data, isError, error, isPending } = usePeopleQuery()
+  const { data, isError, isPending } = usePeopleQuery()
   const dispatch = useDispatch()
 
   const [page, setPage] = useState(1)
@@ -51,7 +51,7 @@ export default function Characters() {
     if (isError) {
       dispatch(addNotification({ type: 'danger', message: 'Failed to load characters' }))
     }
-  }, [isError, error])
+  }, [isError])
 
   if (isPending) {
     content = (
@@ -101,7 +101,7 @@ export default function Characters() {
   return (
     <main className={styles['characters-view']}>
       <div className={styles['characters-view__container']}>
-        <h3 className={styles['characters-view__title']}>Characters</h3>
+        <h3 className={styles['characters-view__title']}>BROWSE CHARACTERS</h3>
         {content}
       </div>
     </main>

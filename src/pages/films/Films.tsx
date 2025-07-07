@@ -9,7 +9,7 @@ import { useFilmsQuery } from '@/services/queries/general'
 import { addNotification } from '@/store/slices/notificationsSlice'
 
 export default function Films() {
-  const { data, error, isError, isPending } = useFilmsQuery()
+  const { data, isError, isPending } = useFilmsQuery()
   const dispatch = useDispatch()
   let content
 
@@ -17,7 +17,7 @@ export default function Films() {
     if (isError) {
       dispatch(addNotification({ type: 'danger', message: 'Failed to load films' }))
     }
-  }, [isError, error])
+  }, [isError])
 
   if (isPending) {
     content = (
