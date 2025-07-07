@@ -25,7 +25,8 @@
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.0",
     "react-redux": "^9.2.0",
-    "react-router-dom": "^7.6.3"
+    "react-router-dom": "^7.6.3",
+    "remixicon": "^4.6.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.16.2",

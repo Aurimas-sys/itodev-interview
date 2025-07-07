@@ -1,0 +1,30 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+
+  &__message {
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &__sub-message {
+    text-align: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    inline-size: 100%;
+    max-inline-size: 40rem;
+  }
+
+  &__button {
+    display: flex;
+    gap: 0.5rem;
+  }
+}

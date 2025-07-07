@@ -9,7 +9,7 @@ import { queryClient } from './services/queryClient'
 import { store } from './store/store'
 
 const Home = lazy(() => import('./pages/home/Home'))
-const Films = lazy(() => import('./pages/Films'))
+const Films = lazy(() => import('./pages/films/Films'))
 const Film = lazy(() => import('./pages/Film'))
 const Characters = lazy(() => import('./pages/Characters'))
 const Character = lazy(() => import('./pages/Character'))
