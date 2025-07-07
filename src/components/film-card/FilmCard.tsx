@@ -20,7 +20,7 @@ export function FilmCard({ title, crawl, url }: FilmCardProps) {
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLSpanElement>) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === 'Enter') {
       e.preventDefault()
       handleNavigation()
     }

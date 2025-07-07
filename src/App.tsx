@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from '@/components/Layout'
 import { SuspenseLoader } from '@/components/loaders/suspense-loader/SuspenseLoader'
-import ScrollToTop from '@/components/ScrollToTop'
 import { ROUTES } from '@/models/constants/router'
 import { queryClient } from '@/services/queryClient'
 import { store } from '@/store/store'
@@ -21,63 +20,61 @@ export function App() {
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <BrowserRouter>
-          <ScrollToTop>
-            <Routes>
+          <Routes>
+            <Route
+              element={<Layout />}
+              path={ROUTES.HOME}
+            >
               <Route
-                element={<Layout />}
-                path={ROUTES.HOME}
-              >
-                <Route
-                  index
-                  element={(
-                    <Suspense fallback={<SuspenseLoader />}>
-                      <Home />
-                    </Suspense>
-                  )}
-                />
-                <Route
-                  element={(
-                    <Suspense fallback={<SuspenseLoader />}>
-                      <Films />
-                    </Suspense>
-                  )}
-                  path={ROUTES.FILMS}
-                />
-                <Route
-                  element={(
-                    <Suspense fallback={<SuspenseLoader />}>
-                      <Film />
-                    </Suspense>
-                  )}
-                  path={ROUTES.FILM}
-                />
-                <Route
-                  element={(
-                    <Suspense fallback={<SuspenseLoader />}>
-                      <Characters />
-                    </Suspense>
-                  )}
-                  path={ROUTES.CHARACTERS}
-                />
-                <Route
-                  element={(
-                    <Suspense fallback={<SuspenseLoader />}>
-                      <Character />
-                    </Suspense>
-                  )}
-                  path={ROUTES.CHARACTER}
-                />
-                <Route
-                  element={(
-                    <Suspense fallback={<SuspenseLoader />}>
-                      <NotFound />
-                    </Suspense>
-                  )}
-                  path={ROUTES.NOT_FOUND}
-                />
-              </Route>
-            </Routes>
-          </ScrollToTop>
+                index
+                element={(
+                  <Suspense fallback={<SuspenseLoader />}>
+                    <Home />
+                  </Suspense>
+                )}
+              />
+              <Route
+                element={(
+                  <Suspense fallback={<SuspenseLoader />}>
+                    <Films />
+                  </Suspense>
+                )}
+                path={ROUTES.FILMS}
+              />
+              <Route
+                element={(
+                  <Suspense fallback={<SuspenseLoader />}>
+                    <Film />
+                  </Suspense>
+                )}
+                path={ROUTES.FILM}
+              />
+              <Route
+                element={(
+                  <Suspense fallback={<SuspenseLoader />}>
+                    <Characters />
+                  </Suspense>
+                )}
+                path={ROUTES.CHARACTERS}
+              />
+              <Route
+                element={(
+                  <Suspense fallback={<SuspenseLoader />}>
+                    <Character />
+                  </Suspense>
+                )}
+                path={ROUTES.CHARACTER}
+              />
+              <Route
+                element={(
+                  <Suspense fallback={<SuspenseLoader />}>
+                    <NotFound />
+                  </Suspense>
+                )}
+                path={ROUTES.NOT_FOUND}
+              />
+            </Route>
+          </Routes>
         </BrowserRouter>
       </Provider>
     </QueryClientProvider>

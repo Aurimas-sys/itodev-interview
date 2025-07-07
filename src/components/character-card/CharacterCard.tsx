@@ -26,7 +26,6 @@ export function CharacterCard({ name, url }: CharacterCardProps) {
   return (
     <div
       className={styles['character-card']}
-      role="button"
       style={{ backgroundImage: `url(${getImage(id)})` }}
       tabIndex={0}
       onClick={handleNavigation}

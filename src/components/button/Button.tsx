@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from '@/components/button/Button.module.scss'
 
 type ButtonType = 'primary' | 'secondary' | 'danger' | 'complementary'
