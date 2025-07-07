@@ -6,8 +6,12 @@
   min-block-size: calc(100dvh - 4rem);
 
   &__title {
-    color: white;
+    margin: 0;
+    color: var(--main-text);
+    font-family: Impact, sans-serif !important;
+    font-size: 2rem;
     font-weight: 600;
+    letter-spacing: 0.05em;
   }
 
   &__container {
@@ -15,12 +19,13 @@
     flex-direction: column;
     block-size: 5rem;
     block-size: auto;
-    gap: 2rem;
+    gap: 1.5rem;
     inline-size: 100%;
-    max-inline-size: 70rem;
+    max-inline-size: 80rem;
   }
 
-  &__skeleton-card {
-    block-size: 13rem;
+  &__loader {
+    margin-block: 0;
+    margin-inline: auto;
   }
 }

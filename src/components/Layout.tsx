@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
-import { Header } from './header/Header'
-import { Notifications } from './notifications/Notifications'
+import { Header } from '@/components/header/Header'
+import { Notifications } from '@/components/notifications/Notifications'
 
 export function Layout() {
   const location = useLocation()

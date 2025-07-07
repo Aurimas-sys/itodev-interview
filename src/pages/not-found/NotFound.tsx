@@ -1,7 +1,7 @@
-import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
-import { ROUTES } from '../../models/constants/router'
-import styles from './NotFound.module.scss'
+import { Button } from '@/components/button/Button'
+import { ROUTES } from '@/models/constants/router'
+import styles from "@/pages/not-found/NotFound.module.scss"
 
 export default function NotFound() {
   const navigate = useNavigate()
@@ -13,10 +13,10 @@ export default function NotFound() {
         <p className={styles['not-found-view__sub-message']}>We could not find what you were looking for. Please recheck the intended destination or retry another route.</p>
         <Button
           className={styles['not-found-view__button']}
+          prependIcon={<i className="ri-arrow-left-line" />}
           variant="danger"
           onClick={() => navigate(ROUTES.HOME)}
         >
-          <i className="ri-arrow-left-line"></i>
           Back
         </Button>
       </div>

@@ -7,8 +7,16 @@
   min-block-size: calc(100dvh - 4rem);
 
   &__message {
-    color: white;
+    margin: 0;
+    color: var(--main-text);
+    font-size: 2rem;
     font-weight: 600;
+    text-align: center;
+  }
+
+  &__sub-message {
+    margin: 0;
+    color: var(--primary-text);
     text-align: center;
   }
 
@@ -18,11 +26,20 @@
     align-items: center;
     gap: 2rem;
     inline-size: 100%;
-    max-inline-size: 40rem;
+    max-inline-size: 50rem;
   }
 
   &__button {
-    block-size: 3.5rem;
+    block-size: 3rem;
+    inline-size: 100%;
+    max-inline-size: 15rem;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
     inline-size: 100%;
   }
 }

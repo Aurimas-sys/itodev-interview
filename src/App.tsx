@@ -2,18 +2,18 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { lazy, Suspense } from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Layout } from './components/Layout'
-import { SuspenseLoader } from './components/suspense-loader/SuspenseLoader'
-import { ROUTES } from './models/constants/router'
-import { queryClient } from './services/queryClient'
-import { store } from './store/store'
+import { Layout } from '@/components/Layout'
+import { SuspenseLoader } from '@/components/loaders/suspense-loader/SuspenseLoader'
+import { ROUTES } from '@/models/constants/router'
+import { queryClient } from '@/services/queryClient'
+import { store } from '@/store/store'
 
-const Home = lazy(() => import('./pages/home/Home'))
-const Films = lazy(() => import('./pages/films/Films'))
-const Film = lazy(() => import('./pages/film/Film'))
-const Characters = lazy(() => import('./pages/characters/Characters'))
-const Character = lazy(() => import('./pages/Character'))
-const NotFound = lazy(() => import('./pages/not-found/NotFound'))
+const Home = lazy(() => import('@/pages/home/Home'))
+const Films = lazy(() => import('@/pages/films/Films'))
+const Film = lazy(() => import('@/pages/film/Film'))
+const Characters = lazy(() => import('@/pages/characters/Characters'))
+const Character = lazy(() => import('@/pages/Character'))
+const NotFound = lazy(() => import('@/pages/not-found/NotFound'))
 
 export function App() {
   return (

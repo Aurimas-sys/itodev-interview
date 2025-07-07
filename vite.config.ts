@@ -1,3 +1,4 @@
+import path from 'node:path'
 import react from '@vitejs/plugin-react'
 import Fonts from 'unplugin-fonts/vite'
 import { defineConfig } from 'vite'
@@ -10,8 +11,8 @@ export default defineConfig({
       google: {
         families: [
           {
-            name: 'Inter',
-            styles: 'wght@400;500;600',
+            name: 'Roboto Mono',
+            styles: 'wght@400;500;700',
             defer: true,
           },
         ],
@@ -19,4 +20,9 @@ export default defineConfig({
       },
     }),
   ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
 })

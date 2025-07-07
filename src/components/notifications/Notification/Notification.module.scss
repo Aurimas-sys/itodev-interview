@@ -1,9 +1,13 @@
 .notification {
-  &__header {
-    justify-content: end;
-  }
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--complementary-bg);
+  color: var(--complementary-text);
+  font-size: 0.75rem;
+  max-inline-size: 12rem;
 
-  &__message {
-    color: white;
+  &--danger {
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
   }
 }

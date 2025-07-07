@@ -6,12 +6,12 @@
   min-block-size: calc(100dvh - 4rem);
 
   &__title {
-    color: white;
+    margin: 0;
+    color: var(--main-text);
+    font-family: Impact, sans-serif !important;
+    font-size: 2rem;
     font-weight: 600;
-  }
-
-  &__form {
-    inline-size: 50%;
+    letter-spacing: 0.05em;
   }
 
   &__container {
@@ -19,12 +19,23 @@
     flex-direction: column;
     block-size: 5rem;
     block-size: auto;
-    gap: 2rem;
+    gap: 1.5rem;
     inline-size: 100%;
-    max-inline-size: 70rem;
+    max-inline-size: 80rem;
   }
 
-  &__pagination {
-    margin-inline-start: auto;
+  &__loader {
+    margin-block: 0;
+    margin-inline: auto;
+  }
+
+  &__cards {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+
+    @media (width >= 30rem) {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }

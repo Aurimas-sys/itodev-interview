@@ -1,0 +1,53 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 0.25rem;
+  color: var(--primary-text);
+  font-size: 1rem;
+  font-weight: 700;
+  gap: 0.5rem;
+
+  &__eclipse {
+    padding: 0.5rem;
+    border-radius: 8px;
+    inline-size: 1.5rem;
+    text-align: center;
+  }
+
+  &__next {
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    inline-size: 1.5rem;
+    text-align: center;
+
+    &--disabled {
+      cursor: auto;
+    }
+
+    &:not(&--disabled):hover,
+    &:not(&--disabled):focus-visible {
+      background-color: var(--complementary-bg);
+      color: var(--complementary-text);
+    }
+  }
+
+  &__page {
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    inline-size: 1.5rem;
+    text-align: center;
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--complementary-bg);
+      color: var(--complementary-text);
+    }
+
+    &--active {
+      background-color: var(--complementary-bg);
+      color: var(--complementary-text);
+    }
+  }
+}

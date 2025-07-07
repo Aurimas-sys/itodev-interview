@@ -1,9 +1,9 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
-export interface Notification {
+interface Notification {
   id: number
-  type: 'success' | 'danger' | 'info' | 'warning'
+  type: 'danger'
   message: string
 }
 
