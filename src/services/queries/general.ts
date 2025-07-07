@@ -37,7 +37,6 @@ export function useFilmsByUrlsQuery(urls: string[] | undefined): UseQueryResult<
 
   return useQuery({
     queryKey: ['films-by-urls', urls],
-    enabled: !!urls,
     queryFn: async () => {
       if (!urls)
         return []
@@ -63,7 +62,6 @@ export function usePeopleByUrlsQuery(urls: string[] | undefined): UseQueryResult
 
   return useQuery({
     queryKey: ['people-by-urls', urls],
-    enabled: !!urls,
     queryFn: async () => {
       if (!urls)
         return []
