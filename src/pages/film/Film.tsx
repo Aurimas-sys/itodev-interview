@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { useFilmQuery } from '../../services/queries/general'
+import { addNotification } from '../../store/slices/notificationsSlice'
 import { useParams } from 'react-router-dom'
-import { useFilmQuery } from '../services/queries/general'
-import { addNotification } from '../store/slices/notificationsSlice'
 
 export default function Film() {
   const { filmId } = useParams()

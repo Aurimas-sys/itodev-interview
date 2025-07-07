@@ -3,6 +3,7 @@
   background-position: center;
   background-size: cover;
   color: #28282b;
+  cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
   min-block-size: 14rem;
@@ -33,7 +34,7 @@
     margin-block-start: auto;
   }
 
-  &__movie-title {
+  &__film-title {
     font-size: 1.25rem;
     font-weight: 600;
   }
@@ -43,7 +44,6 @@
     align-items: center;
     justify-content: center;
     block-size: 100%;
-    cursor: pointer;
     font-size: 2.25rem;
   }
 }

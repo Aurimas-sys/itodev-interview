@@ -9,13 +9,13 @@ export default function Home() {
   return (
     <main className={styles['home-view']}>
       <div className={styles['home-view__content']}>
-        <h3 className={styles['home-view__message']}>Welcome to Star Wars Movies and Characters Explorer</h3>
+        <h3 className={styles['home-view__message']}>Welcome to Star Wars Films and Characters Explorer</h3>
         <Button
           className={styles['home-view__button']}
           variant="primary"
           onClick={() => navigate(ROUTES.FILMS)}
         >
-          View Movies
+          View Films
         </Button>
         <Button
           className={styles['home-view__button']}

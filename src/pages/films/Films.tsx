@@ -14,7 +14,7 @@ export default function Films() {
 
   useEffect(() => {
     if (isError) {
-      dispatch(addNotification({ type: 'danger', message: 'Failed to load movies' }))
+      dispatch(addNotification({ type: 'danger', message: 'Failed to load films' }))
     }
   }, [isError, error])
 
@@ -40,7 +40,7 @@ export default function Films() {
   return (
     <main className={styles['films-view']}>
       <div className={styles['films-view__container']}>
-        <h3 className={styles['films-view__title']}>Movies</h3>
+        <h3 className={styles['films-view__title']}>Films</h3>
         {data.length > 0
           ? (
               data.map(film => (

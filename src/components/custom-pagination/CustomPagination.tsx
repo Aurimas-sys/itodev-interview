@@ -33,7 +33,7 @@ export function CustomPagination({ page, totalPages, className, onPageChange }: 
           >
             1
           </Pagination.Item>
-          <Pagination.Ellipsis />
+          <Pagination.Ellipsis tabIndex={1} />
         </>
       )}
       {pages.map(pageNumber => (
@@ -47,7 +47,7 @@ export function CustomPagination({ page, totalPages, className, onPageChange }: 
       ))}
       {shouldShowLast && (
         <>
-          <Pagination.Ellipsis />
+          <Pagination.Ellipsis  tabIndex={1}/>
           <Pagination.Item
             onClick={() => onPageChange(totalPages)}
           >
