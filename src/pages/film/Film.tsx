@@ -56,19 +56,19 @@ export default function Film() {
         />
         <div className={styles['sub-information']}>
           <div>
-            <span className={styles['sub-information__title']}>Episode:</span>
+            <span className={styles['sub-information__title']}>Episode: </span>
             {film.episode_id}
           </div>
           <div>
-            <span className={styles['sub-information__title']}>Director:</span>
+            <span className={styles['sub-information__title']}>Director: </span>
             {film.director}
           </div>
           <div>
-            <span className={styles['sub-information__title']}>Producer:</span>
+            <span className={styles['sub-information__title']}>Producer: </span>
             {film.producer}
           </div>
           <div>
-            <span className={styles['sub-information__title']}>Released:</span>
+            <span className={styles['sub-information__title']}>Released: </span>
             { film.release_date}
           </div>
         </div>
@@ -77,11 +77,11 @@ export default function Film() {
         </p>
 
         <div className={styles['film-view__characters-cards']}>
-          {characters.map((character, idx) => (
+          {characters.map(({ name, url }) => (
             <CharacterCard
-              key={idx}
-              name={character.name}
-              url={character.url}
+              key={url}
+              name={name}
+              url={url}
             />
           ))}
         </div>
