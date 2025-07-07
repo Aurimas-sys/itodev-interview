@@ -20,11 +20,11 @@ export default {
     '@stylistic/indentation': 2,
     'liberty/use-logical-spec': true,
     'selector-class-pattern': null,
-    'annotation-no-unknown': [true, { ignoreAnnotations: ['default'], },],
-    'selector-pseudo-class-no-unknown': [true, { ignorePseudoClasses: ['global'], }],
+    'annotation-no-unknown': [true, { ignoreAnnotations: ['default'] }],
+    'selector-pseudo-class-no-unknown': [true, { ignorePseudoClasses: ['global'] }],
     'unit-allowed-list': [
       ['fr', 'rem', 'em', '%', 's', 'deg', 'turn', 'dvh', 'ms', 'vw'],
-      { ignoreProperties: { px: ['box-shadow', '/^border/', 'letter-spacing', 'outline'], } }
+      { ignoreProperties: { px: ['box-shadow', '/^border/', 'letter-spacing', 'outline'] } },
     ],
   },
 }

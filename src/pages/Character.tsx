@@ -1,8 +1,8 @@
-import { usePersonQuery } from '@/services/queries/general'
-import { addNotification } from '@/store/slices/notificationsSlice'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { usePersonQuery } from '@/services/queries/general'
+import { addNotification } from '@/store/slices/notificationsSlice'
 
 export default function Character() {
   const { characterId } = useParams()

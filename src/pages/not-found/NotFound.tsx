@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/button/Button'
 import { ROUTES } from '@/models/constants/router'
-import styles from "@/pages/not-found/NotFound.module.scss"
+import styles from '@/pages/not-found/NotFound.module.scss'
 
 export default function NotFound() {
   const navigate = useNavigate()

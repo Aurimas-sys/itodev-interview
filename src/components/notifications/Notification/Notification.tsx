@@ -30,7 +30,7 @@ export function Notification({ id, type, message }: NotificationProps) {
 
   return (
     <div className={`${styles.notification} ${styles[`notification--${type}`]}`}>
-     {message}
+      {message}
     </div>
   )
 }
