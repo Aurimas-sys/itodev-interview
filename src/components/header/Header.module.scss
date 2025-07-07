@@ -3,9 +3,8 @@
   z-index: 999;
   display: flex;
   align-items: center;
-  background-color: #1e1e1e;
+  background-color: #28282b;
   block-size: 4rem;
-  box-shadow: 0 2px 4px rgb(0, 0, 0, 10%);
   inset-block-start: 0;
   padding-inline: 2rem;
 }
@@ -18,7 +17,6 @@
   list-style: none;
 
   &__element {
-    border-block-end: 1.5px solid transparent;
     color: white;
     font-weight: 500;
     padding-block: 0.5rem;
@@ -27,13 +25,12 @@
 
     &:hover,
     &:focus-visible {
-      border-color: #ffd700;
-      color: #ffd700;
-      transition: border-color 0.2s ease, color 0.2s ease;
+      color: #fb0;
+      transition: color 0.2s ease;
     }
 
     &--active {
-      color: #ffd700;
+      color: #fb0;
       transition: color 0.2s ease;
     }
   }
