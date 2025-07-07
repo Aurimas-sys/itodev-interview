@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 3rem;
-  block-size: calc(100dvh - 4rem);
+  min-block-size: calc(100dvh - 4rem);
 
   &__message {
     font-weight: 600;
