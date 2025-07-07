@@ -19,5 +19,4 @@ $pagination-active-color: black;
 $pagination-active-bg: #fb0;
 $pagination-active-border-color: transparent;
 
-// Must be last
-@import "bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/bootstrap";
