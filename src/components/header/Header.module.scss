@@ -9,6 +9,7 @@
   font-size: 1.25rem;
   inset-block-start: 0;
   letter-spacing: 0.05em;
+  padding-block: 1rem;
   padding-inline: 2rem;
 
   nav {
@@ -18,7 +19,7 @@
 
 .nav-list {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   padding: 0;
   margin: 0;
   gap: 2rem;
