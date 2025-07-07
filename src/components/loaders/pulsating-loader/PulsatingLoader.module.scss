@@ -1,0 +1,30 @@
+.pulsating-loader {
+  $variants: (
+    primary,
+    secondary,
+    complementary
+  );
+
+  display: inline-block;
+  border-radius: 100%;
+  animation: pulse 0.5s ease-in-out infinite;
+  block-size: 1.5rem;
+  inline-size: 1.5rem;
+
+  @each $variant in $variants {
+    &--#{$variant} {
+      background-color: var(--#{$variant}-bg);
+    }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}

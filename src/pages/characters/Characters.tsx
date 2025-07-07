@@ -1,18 +1,20 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Form, Spinner } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { CharacterCard } from '../../components/character-card/CharacterCard'
-import { CustomPagination } from '../../components/custom-pagination/CustomPagination'
-import Error from '../../components/error/Error'
-import { NoResults } from '../../components/no-results/NoResults'
-import { usePeopleQuery } from '../../services/queries/general'
-import { addNotification } from '../../store/slices/notificationsSlice'
-import styles from './Characters.module.scss'
+import { CharacterCard } from '@/components/character-card/CharacterCard'
+import Error from '@/components/error/Error'
+import { SpinningLoader } from '@/components/loaders/spinning-loader/SpinningLoader'
+import { NoResults } from '@/components/no-results/NoResults'
+import { Pagination } from '@/components/pagination/Pagination'
+import { TextInput } from '@/components/text-input/TextInput'
+import styles from '@/pages/characters/Characters.module.scss'
+import { usePeopleQuery } from '@/services/queries/general'
+import { addNotification } from '@/store/slices/notificationsSlice'
 
 export default function Characters() {
-  const ITEMS_PER_PAGE = 7
+  const ITEMS_PER_PAGE = 9
+  let content
 
-  const { data, isError, error, isPending } = usePeopleQuery()
+  const { data, isError, isPending } = usePeopleQuery()
   const dispatch = useDispatch()
 
   const [page, setPage] = useState(1)
@@ -22,16 +24,17 @@ export default function Characters() {
   const filteredCharacters = useMemo(() => {
     if (!debouncedSearch)
       return data
-    return data?.filter(character =>
-      character.name.toLowerCase().includes(debouncedSearch),
-    )
+
+    return data?.filter(character => character.name.toLowerCase().includes(debouncedSearch))
   }, [data, debouncedSearch])
+
   const totalPages = filteredCharacters ? Math.ceil(filteredCharacters.length / ITEMS_PER_PAGE) : 0
   const paginatedCharacters = filteredCharacters?.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
 
   const changePage = (newPage: number) => {
     if (newPage < 1 || newPage > totalPages)
       return
+
     setPage(newPage)
   }
 
@@ -48,51 +51,42 @@ export default function Characters() {
     if (isError) {
       dispatch(addNotification({ type: 'danger', message: 'Failed to load characters' }))
     }
-  }, [isError, error])
+  }, [isError])
 
   if (isPending) {
-    return (
-      <main className={styles['characters-view']}>
-        <Spinner
-          animation="border"
-          variant="secondary"
+    content = (
+      <SpinningLoader
+        className={styles['characters-view__loader']}
+        variant="complementary"
+      />
+    )
+  }
+  else if (isError || !paginatedCharacters) {
+    content = <Error />
+  }
+  else {
+    content = (
+      <>
+        <TextInput
+          placeholder="Search characters..."
+          type="text"
+          value={searchInput}
+          onChange={e => setSearchInput(e.target.value)}
         />
-      </main>
-    )
-  }
 
-  if (isError || !paginatedCharacters) {
-    return (
-      <main className={styles['characters-view']}>
-        <Error />
-      </main>
-    )
-  }
-
-  return (
-    <main className={styles['characters-view']}>
-      <div className={styles['characters-view__container']}>
-        <h3 className={styles['characters-view__title']}>Characters</h3>
-        <Form className={styles['characters-view__form']}>
-          <Form.Control
-            placeholder="Search characters..."
-            type="text"
-            value={searchInput}
-            onChange={e => setSearchInput(e.target.value)}
-          />
-        </Form>
         {paginatedCharacters.length > 0
           ? (
               <>
-                {paginatedCharacters.map((character, idx) => (
-                  <CharacterCard
-                    key={idx}
-                    name={character.name}
-                    url={character.url}
-                  />
-                ))}
-                <CustomPagination
-                  className={styles['characters-view__pagination']}
+                <div className={styles['characters-view__cards']}>
+                  {paginatedCharacters.map((character, idx) => (
+                    <CharacterCard
+                      key={idx}
+                      name={character.name}
+                      url={character.url}
+                    />
+                  ))}
+                </div>
+                <Pagination
                   page={page}
                   totalPages={totalPages}
                   onPageChange={changePage}
@@ -100,6 +94,15 @@ export default function Characters() {
               </>
             )
           : <NoResults />}
+      </>
+    )
+  }
+
+  return (
+    <main className={styles['characters-view']}>
+      <div className={styles['characters-view__container']}>
+        <h3 className={styles['characters-view__title']}>BROWSE CHARACTERS</h3>
+        {content}
       </div>
     </main>
   )

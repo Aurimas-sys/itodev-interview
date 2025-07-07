@@ -1,49 +1,56 @@
 .film-card {
+  position: relative;
+  display: flex;
   overflow: hidden;
+  flex-direction: column;
+  justify-content: end;
+  padding: 1rem;
+  border-radius: 8px;
   background-position: center;
   background-size: cover;
-  color: #28282b;
-  font-size: 1rem;
-  font-weight: 500;
-  min-block-size: 14rem;
+  cursor: pointer;
+  gap: 0.5rem;
+  min-block-size: 7rem;
+  transition: transform 0.1s ease-in-out;
 
   &::before {
     position: absolute;
-    z-index: 1;
-    backdrop-filter: blur(0.1rem);
-    background-color: rgb(255, 255, 255, 62%);
+    z-index: 0;
+    border-radius: inherit;
+    background: linear-gradient(to top, rgb(0 0 0 / 72%), rgb(0 0 0 / 33%));
     content: "";
     inset: 0;
   }
 
-  &__body {
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.01);
   }
 
-  &__information {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    justify-content: flex-end;
-    gap: 1rem;
-    inline-size: 40%;
-    margin-block-start: auto;
-  }
-
-  &__movie-title {
+  &__film-title {
+    z-index: 1;
+    color: var(--main-text);
     font-size: 1.25rem;
     font-weight: 600;
   }
 
+  &__film-crawl {
+    z-index: 1;
+    margin: 0;
+    color: var(--main-text);
+    font-size: 0.75rem;
+  }
+
   &__button {
+    z-index: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
-    block-size: 100%;
-    cursor: pointer;
-    font-size: 2.25rem;
+    color: var(--primary-text);
+    font-size: 0.75rem;
+    gap: 0.5rem;
+
+    i {
+      font-size: 1rem;
+    }
   }
 }

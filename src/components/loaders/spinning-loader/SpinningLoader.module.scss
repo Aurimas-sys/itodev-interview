@@ -1,0 +1,27 @@
+.spinner-loader {
+  $variants: (
+    primary,
+    secondary,
+    complementary
+  );
+
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--primary-bg) transparent var(--primary-bg) transparent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  block-size: 2rem;
+  inline-size: 2rem;
+
+  @each $variant in $variants {
+    &--#{$variant} {
+      border-color: var(--#{$variant}-bg) transparent var(--#{$variant}-bg) transparent;
+    }
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

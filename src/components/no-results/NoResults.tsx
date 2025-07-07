@@ -1,4 +1,4 @@
-import styles from './NoResults.module.scss'
+import styles from '@/components/no-results/NoResults.module.scss'
 
 export function NoResults() {
   return (

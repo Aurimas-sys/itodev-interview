@@ -1,58 +1,54 @@
 import { useEffect } from 'react'
-import { Spinner } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import Error from '../../components/error/Error'
-import { FilmCard } from '../../components/film-card/FilmCard'
-import { NoResults } from '../../components/no-results/NoResults'
-import { useFilmsQuery } from '../../services/queries/general'
-import { addNotification } from '../../store/slices/notificationsSlice'
-import styles from './Films.module.scss'
+import Error from '@/components/error/Error'
+import { FilmCard } from '@/components/film-card/FilmCard'
+import { SpinningLoader } from '@/components/loaders/spinning-loader/SpinningLoader'
+import { NoResults } from '@/components/no-results/NoResults'
+import styles from '@/pages/films/Films.module.scss'
+import { useFilmsQuery } from '@/services/queries/general'
+import { addNotification } from '@/store/slices/notificationsSlice'
 
 export default function Films() {
-  const { data, error, isError, isPending } = useFilmsQuery()
+  const { data, isError, isPending } = useFilmsQuery()
   const dispatch = useDispatch()
+  let content
 
   useEffect(() => {
     if (isError) {
-      dispatch(addNotification({ type: 'danger', message: 'Failed to load movies' }))
+      dispatch(addNotification({ type: 'danger', message: 'Failed to load films' }))
     }
-  }, [isError, error])
+  }, [isError])
 
   if (isPending) {
-    return (
-      <main className={styles['films-view']}>
-        <Spinner
-          animation="border"
-          variant="secondary"
-        />
-      </main>
+    content = (
+      <SpinningLoader
+        className={styles['films-view__loader']}
+        variant="complementary"
+      />
     )
   }
-
-  if (isError) {
-    return (
-      <main className={styles['films-view']}>
-        <Error />
-      </main>
-    )
+  else if (isError) {
+    content = <Error />
+  }
+  else if (data.length > 0) {
+    content = data.map(({ url, title, opening_crawl }) => (
+      <FilmCard
+        key={url}
+        crawl={opening_crawl}
+        title={title}
+        url={url}
+      />
+    ))
+  }
+  else {
+    content = <NoResults />
   }
 
   return (
     <main className={styles['films-view']}>
       <div className={styles['films-view__container']}>
-        <h3 className={styles['films-view__title']}>Movies</h3>
-        {data.length > 0
-          ? (
-              data.map(film => (
-                <FilmCard
-                  key={film.url}
-                  crawl={film.opening_crawl}
-                  title={film.title}
-                  url={film.url}
-                />
-              ))
-            )
-          : <NoResults /> }
+        <h3 className={styles['films-view__title']}>BROWSE FILMS</h3>
+        {content}
       </div>
     </main>
   )

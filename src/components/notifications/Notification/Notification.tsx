@@ -1,12 +1,11 @@
 import { useEffect } from 'react'
-import { Toast } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { removeNotification } from '../../../store/slices/notificationsSlice'
-import styles from './Notification.module.scss'
+import styles from '@/components/notifications/Notification/Notification.module.scss'
+import { removeNotification } from '@/store/slices/notificationsSlice'
 
 interface NotificationProps {
   id: number
-  type: 'success' | 'danger' | 'info' | 'warning'
+  type: 'danger'
   message: string
 }
 
@@ -30,19 +29,8 @@ export function Notification({ id, type, message }: NotificationProps) {
   }, [])
 
   return (
-    <Toast
-      animation
-      bg={type}
-
-      onClose={handleClose}
-    >
-      <Toast.Header
-        closeButton
-        className={styles.notification__header}
-      />
-      <Toast.Body className={styles.notification__message}>
-        {message}
-      </Toast.Body>
-    </Toast>
+    <div className={`${styles.notification} ${styles[`notification--${type}`]}`}>
+      {message}
+    </div>
   )
 }

@@ -1,6 +1,6 @@
-import type { Film, Person } from '../../models/interfaces/api'
+import type { Film, Person } from '@/models/interfaces/api'
 import axios from 'axios'
-import { BASE_API_URL } from '../../models/constants/api'
+import { BASE_API_URL } from '@/models/constants/api'
 
 export async function fetchFilms(): Promise<Film[]> {
   const URL = `${BASE_API_URL}/films`

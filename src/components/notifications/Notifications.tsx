@@ -1,7 +1,7 @@
-import type { RootStore } from '../../store/store'
+import type { RootStore } from '@/store/store'
 import { useSelector } from 'react-redux'
-import { Notification } from './Notification/Notification'
-import styles from './Notifications.module.scss'
+import { Notification } from '@/components/notifications/Notification/Notification'
+import styles from '@/components/notifications/Notifications.module.scss'
 
 export function Notifications() {
   const notifications = useSelector((state: RootStore) => state.notifications.items)

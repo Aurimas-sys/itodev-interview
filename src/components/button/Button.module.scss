@@ -1,0 +1,40 @@
+.button {
+  $variants: (
+    primary,
+    secondary,
+    danger,
+    complementary
+  );
+
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-family: "Roboto Mono", sans-serif;
+  padding-block: 0.25rem;
+  padding-inline: 0.5rem;
+  transition: transform 0.1s ease-in-out, background-color 0.1s ease-in-out;
+  will-change: transform;
+
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.01);
+  }
+
+  @each $variant in $variants {
+    &--#{$variant} {
+      background-color: var(--#{$variant}-bg);
+      color: var(--#{$variant}-text);
+
+      &:hover {
+        background-color: var(--#{$variant}-hover);
+      }
+    }
+  }
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.25rem;
+  line-height: 0;
+}

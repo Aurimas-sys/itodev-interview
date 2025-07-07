@@ -3,21 +3,36 @@
   z-index: 999;
   display: flex;
   align-items: center;
-  background-color: #28282b;
+  background-color: var(--primary-bg);
   block-size: 4rem;
+  font-family: Impact, sans-serif !important;
+  font-size: 1.25rem;
   inset-block-start: 0;
+  letter-spacing: 0.05em;
+  padding-block: 1rem;
   padding-inline: 2rem;
+
+  nav {
+    inline-size: 100%;
+  }
 }
 
 .nav-list {
   display: flex;
+  align-items: center;
   padding: 0;
   margin: 0;
   gap: 2rem;
   list-style: none;
 
+  &__link:first-of-type {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-inline-end: auto;
+  }
+
   &__element {
-    color: white;
+    color: var(--main-text);
     font-weight: 500;
     padding-block: 0.5rem;
     padding-inline: 0;
@@ -25,12 +40,12 @@
 
     &:hover,
     &:focus-visible {
-      color: #fb0;
+      color: var(--primary-text);
       transition: color 0.2s ease;
     }
 
     &--active {
-      color: #fb0;
+      color: var(--primary-text);
       transition: color 0.2s ease;
     }
   }

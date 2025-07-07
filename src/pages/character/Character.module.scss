@@ -1,4 +1,4 @@
-.characters-view {
+.character-view {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +12,7 @@
     font-size: 2rem;
     font-weight: 600;
     letter-spacing: 0.05em;
+    text-align: center;
   }
 
   &__container {
@@ -29,7 +30,16 @@
     margin-inline: auto;
   }
 
-  &__cards {
+  &__image {
+    position: relative;
+    border-radius: 8px;
+    background-position: center;
+    background-size: cover;
+    inline-size: 100%;
+    min-block-size: 15rem;
+  }
+
+  &__characters-cards {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
@@ -37,5 +47,21 @@
     @media (width >= 30rem) {
       grid-template-columns: repeat(3, 1fr);
     }
+  }
+}
+
+.sub-information {
+  display: grid;
+  color: var(--main-text);
+  font-size: 0.75rem;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+
+  @media (width >= 30rem) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__title {
+    color: var(--primary-text);
   }
 }

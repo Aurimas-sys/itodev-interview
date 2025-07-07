@@ -1,8 +1,7 @@
-import { Card } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
-import { ROUTES } from '../../models/constants/router'
-import { getImage } from '../../utils/image'
-import styles from './FilmCard.module.scss'
+import styles from '@/components/film-card/FilmCard.module.scss'
+import { ROUTES } from '@/models/constants/router'
+import { getImage } from '@/utils/image'
 
 interface FilmCardProps {
   title: string
@@ -28,27 +27,23 @@ export function FilmCard({ title, crawl, url }: FilmCardProps) {
   }
 
   return (
-    <Card
+    <div
       className={styles['film-card']}
       style={{ backgroundImage: `url(${getImage(id)})` }}
+      tabIndex={0}
+      onClick={handleNavigation}
+      onKeyDown={handleKeyDown}
     >
-      <Card.Body className={styles['film-card__body']}>
-        <div className={styles['film-card__information']}>
-          <div className={styles['film-card__movie-title']}>
-            { title }
-          </div>
-          <p>
-            { truncatedCrawl }
-          </p>
-        </div>
-        <span
-          className={`ri-arrow-right-wide-fill ${styles['film-card__button']}`}
-          role="button"
-          tabIndex={0}
-          onClick={handleNavigation}
-          onKeyDown={handleKeyDown}
-        />
-      </Card.Body>
-    </Card>
+      <div className={styles['film-card__film-title']}>
+        { title }
+      </div>
+      <p className={styles['film-card__film-crawl']}>
+        { truncatedCrawl }
+      </p>
+      <div className={styles['film-card__button']}>
+        <div>View Details</div>
+        <i className="ri-arrow-right-line" />
+      </div>
+    </div>
   )
 }

@@ -1,7 +1,7 @@
-import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
-import { ROUTES } from '../../models/constants/router'
-import styles from './Error.module.scss'
+import { Button } from '@/components/button/Button'
+import styles from '@/components/error/Error.module.scss'
+import { ROUTES } from '@/models/constants/router'
 
 export default function Error() {
   const navigate = useNavigate()
@@ -12,7 +12,6 @@ export default function Error() {
         <h3 className={styles.error__message}>Whoops! Something went wrong!</h3>
         <p className={styles['error__sub-message']}>We could not find what you were looking for.</p>
         <Button
-          className={styles.error__button}
           variant="danger"
           onClick={() => navigate(ROUTES.HOME)}
         >
