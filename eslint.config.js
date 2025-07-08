@@ -18,16 +18,30 @@ export default antfu({
       noSortAlphabetically: false,
       reservedFirst: true,
     }],
-
-    '@typescript-eslint/explicit-function-return-type': ['warn', {
-      allowExpressions: false,
-      allowTypedFunctionExpressions: false,
-      allowHigherOrderFunctions: false,
-      allowDirectConstAssertionInArrowFunctions: true,
-    }],
-    '@typescript-eslint/explicit-module-boundary-types': ['warn'],
-    '@typescript-eslint/explicit-member-accessibility': ['warn', {
-      accessibility: 'explicit',
-    }],
   },
+  overrides: [
+    {
+      files: ['src/**/*.{ts,tsx}'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': ['warn', {
+          allowExpressions: false,
+          allowTypedFunctionExpressions: false,
+          allowHigherOrderFunctions: false,
+          allowDirectConstAssertionInArrowFunctions: true,
+        }],
+        '@typescript-eslint/explicit-module-boundary-types': ['warn'],
+        '@typescript-eslint/explicit-member-accessibility': ['warn', {
+          accessibility: 'explicit',
+        }],
+      },
+    },
+    {
+      files: ['**/*.test.{ts,tsx}', '**/__tests__/**/*.{ts,tsx}'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        '@typescript-eslint/explicit-member-accessibility': 'off',
+      },
+    },
+  ],
 })

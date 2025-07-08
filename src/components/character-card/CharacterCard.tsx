@@ -27,6 +27,7 @@ export function CharacterCard({ name, url }: CharacterCardProps): JSX.Element {
   return (
     <div
       className={styles['character-card']}
+      data-testid={`character-card-${id}`}
       style={{ backgroundImage: `url(${getImage(id)})` }}
       tabIndex={0}
       onClick={handleNavigation}
