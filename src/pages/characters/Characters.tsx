@@ -1,3 +1,5 @@
+import type { JSX } from 'react'
+import type { Person } from '@/models/interfaces/api'
 import { useEffect, useMemo, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { CharacterCard } from '@/components/character-card/CharacterCard'
@@ -10,7 +12,7 @@ import styles from '@/pages/characters/Characters.module.scss'
 import { usePeopleQuery } from '@/services/queries/general'
 import { addNotification } from '@/store/slices/notificationsSlice'
 
-export default function Characters() {
+export default function Characters(): JSX.Element {
   const ITEMS_PER_PAGE = 9
   let content
 
@@ -21,33 +23,33 @@ export default function Characters() {
   const [searchInput, setSearchInput] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('')
 
-  const filteredCharacters = useMemo(() => {
+  const filteredCharacters = useMemo((): Person[] | undefined => {
     if (!debouncedSearch)
       return data
 
-    return data?.filter(character => character.name.toLowerCase().includes(debouncedSearch))
+    return data?.filter((character): boolean => character.name.toLowerCase().includes(debouncedSearch))
   }, [data, debouncedSearch])
 
   const totalPages = filteredCharacters ? Math.ceil(filteredCharacters.length / ITEMS_PER_PAGE) : 0
   const paginatedCharacters = filteredCharacters?.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
 
-  const changePage = (newPage: number) => {
+  const changePage = (newPage: number): void => {
     if (newPage < 1 || newPage > totalPages)
       return
 
     setPage(newPage)
   }
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
+  useEffect((): () => void => {
+    const timeout = setTimeout((): void => {
       setDebouncedSearch(searchInput.trim().toLowerCase())
       setPage(1)
     }, 1000)
 
-    return () => clearTimeout(timeout)
+    return (): void => clearTimeout(timeout)
   }, [searchInput])
 
-  useEffect(() => {
+  useEffect((): void => {
     if (isError) {
       dispatch(addNotification({ type: 'danger', message: 'Failed to load characters' }))
     }
@@ -71,14 +73,14 @@ export default function Characters() {
           placeholder="Search characters..."
           type="text"
           value={searchInput}
-          onChange={e => setSearchInput(e.target.value)}
+          onChange={(e): void => setSearchInput(e.target.value)}
         />
 
         {paginatedCharacters.length > 0
           ? (
               <>
                 <div className={styles['characters-view__cards']}>
-                  {paginatedCharacters.map((character, idx) => (
+                  {paginatedCharacters.map((character, idx): JSX.Element => (
                     <CharacterCard
                       key={idx}
                       name={character.name}

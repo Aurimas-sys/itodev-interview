@@ -1,9 +1,10 @@
+import type { JSX } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/button/Button'
 import { ROUTES } from '@/models/constants/router'
 import styles from '@/pages/not-found/NotFound.module.scss'
 
-export default function NotFound() {
+export default function NotFound(): JSX.Element {
   const navigate = useNavigate()
 
   return (
@@ -15,7 +16,7 @@ export default function NotFound() {
           className={styles['not-found-view__button']}
           prependIcon={<i className="ri-arrow-left-line" />}
           variant="danger"
-          onClick={() => navigate(ROUTES.HOME)}
+          onClick={(): void | Promise<void> => navigate(ROUTES.HOME)}
         >
           Back
         </Button>

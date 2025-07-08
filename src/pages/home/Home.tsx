@@ -1,9 +1,10 @@
+import type { JSX } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/button/Button'
 import { ROUTES } from '@/models/constants/router'
 import styles from '@/pages/home/home.module.scss'
 
-export default function Home() {
+export default function Home(): JSX.Element {
   const navigate = useNavigate()
 
   return (
@@ -15,14 +16,14 @@ export default function Home() {
           <Button
             className={styles['home-view__button']}
             variant="complementary"
-            onClick={() => navigate(ROUTES.FILMS)}
+            onClick={(): void | Promise<void> => navigate(ROUTES.FILMS)}
           >
             View Films
           </Button>
           <Button
             className={styles['home-view__button']}
             variant="secondary"
-            onClick={() => navigate(ROUTES.CHARACTERS)}
+            onClick={(): void | Promise<void> => navigate(ROUTES.CHARACTERS)}
           >
             View Characters
           </Button>

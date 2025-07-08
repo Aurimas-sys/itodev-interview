@@ -1,3 +1,4 @@
+import type { JSX } from 'react'
 import styles from '@/components/button/Button.module.scss'
 
 type ButtonType = 'primary' | 'secondary' | 'danger' | 'complementary'
@@ -9,7 +10,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
 }
 
-export function Button({ children, variant = 'primary', prependIcon, className, ...props }: ButtonProps) {
+export function Button({ children, variant = 'primary', prependIcon, className, ...props }: ButtonProps): JSX.Element {
   const extendedClassName = `${styles.button} ${styles[`button--${variant}`]} ${className || ''}`.trim()
 
   return (

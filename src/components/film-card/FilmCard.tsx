@@ -1,3 +1,4 @@
+import type { JSX } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from '@/components/film-card/FilmCard.module.scss'
 import { ROUTES } from '@/models/constants/router'
@@ -9,17 +10,17 @@ interface FilmCardProps {
   url: string
 }
 
-export function FilmCard({ title, crawl, url }: FilmCardProps) {
+export function FilmCard({ title, crawl, url }: FilmCardProps): JSX.Element {
   const MAX_LENGTH = 128
   const truncatedCrawl = crawl.length > MAX_LENGTH ? `${crawl.slice(0, MAX_LENGTH).trim()}…` : crawl
   const id = Number(url.split('/').filter(Boolean).pop()) ?? 1
   const navigate = useNavigate()
 
-  const handleNavigation = () => {
+  const handleNavigation = (): void => {
     navigate(ROUTES.FILM_BY_ID(id))
   }
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLSpanElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLSpanElement>): void => {
     if (e.key === 'Enter') {
       e.preventDefault()
       handleNavigation()
