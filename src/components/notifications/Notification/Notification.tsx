@@ -1,3 +1,4 @@
+import type { JSX } from 'react'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import styles from '@/components/notifications/Notification/Notification.module.scss'
@@ -9,18 +10,18 @@ interface NotificationProps {
   message: string
 }
 
-export function Notification({ id, type, message }: NotificationProps) {
+export function Notification({ id, type, message }: NotificationProps): JSX.Element {
   let timeOutId: ReturnType<typeof setTimeout> | null = null
   const dispatch = useDispatch()
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     dispatch(removeNotification(id))
   }
 
-  useEffect(() => {
-    timeOutId = setTimeout(() => handleClose(), 3000)
+  useEffect((): () => void => {
+    timeOutId = setTimeout((): void => handleClose(), 3000)
 
-    return () => {
+    return (): void => {
       if (!timeOutId)
         return
 

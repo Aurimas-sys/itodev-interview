@@ -1,9 +1,10 @@
+import type { JSX } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/button/Button'
 import styles from '@/components/error/Error.module.scss'
 import { ROUTES } from '@/models/constants/router'
 
-export default function Error() {
+export default function Error(): JSX.Element {
   const navigate = useNavigate()
 
   return (
@@ -13,7 +14,7 @@ export default function Error() {
         <p className={styles['error__sub-message']}>We could not find what you were looking for.</p>
         <Button
           variant="danger"
-          onClick={() => navigate(ROUTES.HOME)}
+          onClick={(): void | Promise<void> => navigate(ROUTES.HOME)}
         >
           Main Page
         </Button>

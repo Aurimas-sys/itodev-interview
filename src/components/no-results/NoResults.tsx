@@ -1,6 +1,7 @@
+import type { JSX } from 'react'
 import styles from '@/components/no-results/NoResults.module.scss'
 
-export function NoResults() {
+export function NoResults(): JSX.Element {
   return (
     <div className={styles['no-result']}>
       <i className={`${styles['no-result__icon']} ri-emotion-sad-fill`}></i>

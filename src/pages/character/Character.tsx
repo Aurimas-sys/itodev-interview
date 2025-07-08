@@ -1,3 +1,4 @@
+import type { JSX } from 'react'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -9,7 +10,7 @@ import { useFilmsByUrlsQuery, usePersonQuery } from '@/services/queries/general'
 import { addNotification } from '@/store/slices/notificationsSlice'
 import { getImage } from '@/utils/image'
 
-export default function Character() {
+export default function Character(): JSX.Element {
   const { characterId } = useParams()
   let content
 
@@ -27,7 +28,7 @@ export default function Character() {
   const { data: films, isError: isFilmsLoadError, isPending: isFilmsLoadPending } = useFilmsByUrlsQuery(character?.films)
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  useEffect((): void => {
     if (isCharacterLoadError || isFilmsLoadError) {
       dispatch(addNotification({ type: 'danger', message: 'Failed to character film' }))
     }
@@ -85,7 +86,7 @@ export default function Character() {
           </div>
         </div>
         <div className={styles['character-view__characters-cards']}>
-          {films.map(({ url, opening_crawl, title }) => (
+          {films.map(({ url, opening_crawl, title }): JSX.Element => (
             <FilmCard
               key={url}
               crawl={opening_crawl}

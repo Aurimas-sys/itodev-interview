@@ -27,3 +27,7 @@ pnpm dev
 
 pnpm all:check - checks lint in all relevant files
 pnpm all:fix - fixes lint in all relevant files
+
+### Note
+
+In real app i would also add locale logic and not harcode text inside components

@@ -1,3 +1,4 @@
+import type { JSX } from 'react'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import Error from '@/components/error/Error'
@@ -8,12 +9,12 @@ import styles from '@/pages/films/Films.module.scss'
 import { useFilmsQuery } from '@/services/queries/general'
 import { addNotification } from '@/store/slices/notificationsSlice'
 
-export default function Films() {
+export default function Films(): JSX.Element {
   const { data, isError, isPending } = useFilmsQuery()
   const dispatch = useDispatch()
   let content
 
-  useEffect(() => {
+  useEffect((): void => {
     if (isError) {
       dispatch(addNotification({ type: 'danger', message: 'Failed to load films' }))
     }
@@ -31,7 +32,7 @@ export default function Films() {
     content = <Error />
   }
   else if (data.length > 0) {
-    content = data.map(({ url, title, opening_crawl }) => (
+    content = data.map(({ url, title, opening_crawl }): JSX.Element => (
       <FilmCard
         key={url}
         crawl={opening_crawl}

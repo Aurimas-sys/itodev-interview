@@ -21,14 +21,14 @@ export function usePeopleQuery(): UseQueryResult<Person[], unknown> {
 export function useFilmQuery(id: string): UseQueryResult<Film, unknown> {
   return useQuery({
     queryKey: ['film', id],
-    queryFn: () => fetchFilm(id),
+    queryFn: (): Promise<Film> => fetchFilm(id),
   })
 }
 
 export function usePersonQuery(id: string): UseQueryResult<Person, unknown> {
   return useQuery({
     queryKey: ['person', id],
-    queryFn: () => fetchPerson(id),
+    queryFn: (): Promise<Person> => fetchPerson(id),
   })
 }
 
@@ -37,11 +37,11 @@ export function useFilmsByUrlsQuery(urls: string[] | undefined): UseQueryResult<
 
   return useQuery({
     queryKey: ['films-by-urls', urls],
-    queryFn: async () => {
+    queryFn: async (): Promise<Film[]> => {
       if (!urls)
         return []
 
-      const promises = urls.map(async (url) => {
+      const promises = urls.map(async (url): Promise<Film> => {
         const id = extractIdFromUrl(url)
         const film = await fetchFilm(id)
 
@@ -62,11 +62,11 @@ export function usePeopleByUrlsQuery(urls: string[] | undefined): UseQueryResult
 
   return useQuery({
     queryKey: ['people-by-urls', urls],
-    queryFn: async () => {
+    queryFn: async (): Promise<Person[]> => {
       if (!urls)
         return []
 
-      const promises = urls.map(async (url) => {
+      const promises = urls.map(async (url): Promise<Person> => {
         const id = extractIdFromUrl(url)
         const person = await fetchPerson(id)
 
