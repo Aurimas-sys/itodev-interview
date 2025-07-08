@@ -16,6 +16,7 @@ export function Button({ children, variant = 'primary', prependIcon, className, 
   return (
     <button
       className={extendedClassName}
+      data-testid="button"
       {...props}
     >
       {prependIcon && (

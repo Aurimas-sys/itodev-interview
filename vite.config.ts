@@ -1,9 +1,12 @@
+/// <reference types="vitest" />
+
 import path from 'node:path'
 import react from '@vitejs/plugin-react'
 import Fonts from 'unplugin-fonts/vite'
 import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
+
 export default defineConfig({
   plugins: [
     react(),
@@ -20,6 +23,11 @@ export default defineConfig({
       },
     }),
   ],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.ts',
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),

@@ -14,7 +14,8 @@
     "all:check": "pnpm run lint:check && pnpm run style:check",
     "all:fix": "pnpm run lint:fix && pnpm run style:fix",
     "generate-scss-types": "typed-scss-modules src --nameFormat none --exportType default",
-    "generate-scss-types:watch": "typed-scss-modules src --nameFormat none --exportType default --watch"
+    "generate-scss-types:watch": "typed-scss-modules src --nameFormat none --exportType default --watch",
+    "test": "vitest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
@@ -32,16 +33,21 @@
     "@eslint/js": "^9.29.0",
     "@stylistic/stylelint-config": "^2.0.0",
     "@stylistic/stylelint-plugin": "^3.1.3",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^24.0.10",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.5.2",
+    "@vitest/ui": "^3.2.4",
     "concurrently": "^9.2.0",
     "eslint": "^9.29.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.2.0",
+    "jsdom": "^26.1.0",
     "postcss-scss": "^4.0.9",
     "sass": "^1.77.6",
     "stylelint": "^16.21.1",
@@ -53,6 +59,7 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.34.1",
     "unplugin-fonts": "^1.3.1",
-    "vite": "^7.0.0"
+    "vite": "^7.0.0",
+    "vitest": "^3.2.4"
   }
 }
